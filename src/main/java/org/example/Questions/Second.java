@@ -26,12 +26,31 @@ public class Second {
         Optional<Character> nonRepeated = str.chars().mapToObj(c->(char)c).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new, Collectors.counting())).entrySet().stream().filter(entry -> entry.getValue()==1).map(entry->entry.getKey()).findFirst();
         nonRepeated.ifPresent(System.out::println);
 
-        List<String> str4 = List.of("AWS","SQL","JAVA" ,"Python" , "C++","Docker" , "AWS","SQL" , "Java");
+        List<String> str4 = List.of("AWS","SQL","JAVA" ,"Python" , "C++","Docker" ,"SQL" , "Java","Java");
         Map<Integer,List<String>> groupedBY = str4.stream().collect(Collectors.groupingBy(String::length));
         System.out.println(groupedBY);
 
         Map<String,Long> counter = str4.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
         System.out.println(counter);
+
+        String str22 = "Programming is done";
+        Map<Character, Long> count = str22.chars().mapToObj(c->(char) c ).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        System.out.println(count);
+
+        Optional<Object> mostFrequent = str4.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()). map(Map.Entry::getKey);
+        mostFrequent.ifPresent(System.out::println);
+
+        Optional<String> length = str4.stream().max(Comparator.comparingLong(String::length));
+        length.ifPresent(System.out::println);
+        String smallest = str4.stream().reduce((s1,s2)-> s2.length()>s1.length()?s1:s2).orElse("");
+        System.out.println(smallest);
+        Optional<String> smallestMin = str4.stream().min(Comparator.comparingLong(String::length));
+        smallestMin.ifPresent(System.out::println);
+
+        Map<String, Integer> toMap = str4.stream().collect(Collectors.toMap(Function.identity(),String::length,(existing, replacement)->existing));
+        System.out.println(toMap);
+
     }
+
 
 }
