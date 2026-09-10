@@ -1,102 +1,146 @@
-# Java Practice Questions
+# Stream API Practice
 
-A collection of beginner Java programs I wrote while practising programming basics, arrays (DSA), and the Java Collections Framework. Most programs are small, self-contained console apps that read input with `Scanner` and print the result.
+Hands-on practice with the **Java Stream API**, working through a set of 50 questions that go from simple filtering and sorting to grouping and reporting on employee data.
+
+The full question list, with a difficulty level and sample input for each, is in [`java_streams_questions.csv`](java_streams_questions.csv).
+
+## Tech Stack
+
+- Java 26 (uses the `static void main()` and `IO.println` features added in Java 25)
+- Maven
+- IntelliJ IDEA
 
 ## Project Structure
 
 ```
-questions/
-├── basics/          # Number and string problems
-├── dsa/             # Array problems
-├── collections/     # Java Collections Framework exercises
-├── compare.java     # Custom comparison interface used by main1.java
-├── main1.java       # Comparator, HashMap and LinkedHashMap experiments
-└── list.java        # Placeholder (empty)
+StreamAPIpractice/
+├── java_streams_questions.csv            # The 50 practice questions
+├── pom.xml
+└── src/main/java/org/example/
+    ├── Main.java                         # IntelliJ starter template
+    └── Questions/
+        ├── first.java                    # Integer list questions
+        └── Second.java                   # String list questions
 ```
 
-## Programs
+## Concepts Covered
 
-### `basics/` — Number and string problems
+| Concept | Stream operations used |
+|---------|------------------------|
+| Filtering | `filter`, `distinct` |
+| Transforming | `map`, `mapToInt`, `mapToObj`, `flatMap` |
+| Sorting and slicing | `sorted`, `Comparator.naturalOrder()` / `reverseOrder()`, `skip`, `limit` |
+| Finding | `findFirst`, `min`, `Optional.ifPresent` |
+| Aggregating | `sum`, `Collectors.averagingInt`, `Collectors.counting` |
+| Grouping | `Collectors.groupingBy`, `Collectors.partitioningBy`, `LinkedHashMap` to keep insertion order |
 
-| File | Problem |
-|------|---------|
-| `first.java` | Sum of two numbers |
-| `second.java` | Count the digits in a number |
-| `third.java` | Sum (and count) of the digits in a number |
-| `forth.java` | Reverse a number |
-| `fifth.java` | Check if a number is a palindrome (also a small object / `System.gc()` demo) |
-| `sixth.java` | Check if a number is prime (trial division up to √n) |
-| `prime.java` | Quick prime check (divisibility by 2 or 3 only) |
-| `printnum.java` | Print all prime numbers from 1 to n |
-| `armstrongnum.java` | Check if a number is an Armstrong number |
-| `perfect.java` | Check if a number is a perfect number |
-| `factorial.java` | Factorial of a number |
-| `fibonacci.java` | Print the Fibonacci series (recursive) |
-| `gdc.java` | GCD of two numbers using `BigInteger.gcd` |
-| `multiplicationtable.java` | Multiplication table of a number |
-| `revesedStr.java` | Reverse a string and check if it is a palindrome |
+## Progress
 
-### `dsa/` — Arrays
+**23 of 50 solved** — ✅ solved · 🟡 partly solved · ⬜ not yet
 
-| File | Problem |
-|------|---------|
-| `first.java` | Read an array from input and print it |
-| `second.java` | Find the largest element in an array |
-| `count.java` | Count the even and odd elements in an array |
-| `reverse.java` | Reverse an array in place (two-pointer approach) |
-| `secondlargest.java` | Find the second largest element (*work in progress*) |
+### Easy (1–15)
 
-### `collections/` — Collections Framework
+| # | Question | Status | File |
+|---|----------|:------:|------|
+| 1 | Find all even numbers | ✅ | `first.java` |
+| 2 | Find all odd numbers | ✅ | `first.java` |
+| 3 | Sum of all numbers | ✅ | `first.java` |
+| 4 | Maximum number | ⬜ | |
+| 5 | Minimum number | ✅ | `first.java` |
+| 6 | Count elements | ✅ | `first.java` |
+| 7 | Remove duplicates with `distinct()` | ✅ | `first.java` |
+| 8 | Sort ascending | ✅ | `first.java` |
+| 9 | Sort descending | ✅ | `first.java` |
+| 10 | Convert strings to uppercase | ✅ | `Second.java` |
+| 11 | Strings starting with "A" | ✅ | `Second.java` |
+| 12 | Strings longer than 5 characters | ✅ | `Second.java` |
+| 13 | Join a list into a comma-separated string | 🟡 | `Second.java` |
+| 14 | Any number greater than 100 | ✅ | `first.java` |
+| 15 | All numbers positive | 🟡 | `first.java` |
 
-| File | Problem |
-|------|---------|
-| `duplicates.java` | Remove duplicates from an `ArrayList` using a `HashSet` |
+### Medium (16–35)
 
-### Root
+| # | Question | Status | File |
+|---|----------|:------:|------|
+| 16 | First element | ✅ | `first.java` |
+| 17 | First non-repeated character | ✅ | `Second.java` |
+| 18 | All duplicate elements | ✅ | `first.java` |
+| 19 | Second-highest number | ✅ | `first.java` |
+| 20 | Second-lowest number | ✅ | `first.java` |
+| 21 | Top 3 highest numbers | ✅ | `first.java` |
+| 22 | Top 3 lowest numbers | ✅ | `first.java` |
+| 23 | Average of all numbers | ✅ | `first.java` |
+| 24 | Partition into even/odd with `partitioningBy()` | ✅ | `first.java` |
+| 25 | Group strings by length | ✅ | `Second.java` |
+| 26 | Frequency of each element | ✅ | `Second.java` |
+| 27 | Frequency of each character | ⬜ | |
+| 28 | Most frequent element | ⬜ | |
+| 29 | Longest string | ⬜ | |
+| 30 | Shortest string | ⬜ | |
+| 31 | `List<String>` to `Map<String, Integer>` (string → length) | ⬜ | |
+| 32 | Common elements between two lists | ⬜ | |
+| 33 | Elements in the first list but not the second | ⬜ | |
+| 34 | Flatten `List<List<Integer>>` with `flatMap()` | ⬜ | |
+| 35 | Sum of a nested list | ⬜ | |
 
-| File | Description |
-|------|-------------|
-| `main1.java` | Experiments with `ArrayList`, a custom `Comparator` (sort strings by length), `HashMap` (including `null` keys) and `LinkedHashMap` |
-| `compare.java` | A custom `compare(Integer, Integer)` interface implemented in `main1.java` |
+### Hard (36–45) — Employee data
+
+| # | Question | Status |
+|---|----------|:------:|
+| 36 | Highest-paid employee | ⬜ |
+| 37 | Second-highest-paid employee | ⬜ |
+| 38 | Highest-paid employee in each department | ⬜ |
+| 39 | Average salary per department | ⬜ |
+| 40 | Employee count per department | ⬜ |
+| 41 | Group by department, sort by salary | ⬜ |
+| 42 | Second-highest salary per department | ⬜ |
+| 43 | Employee with the highest salary per department | ⬜ |
+| 44 | Youngest employee per department | ⬜ |
+| 45 | Department with the highest average salary | ⬜ |
+
+### Very Hard (46–50)
+
+| # | Question | Status |
+|---|----------|:------:|
+| 46 | Nth-highest salary (3rd highest) | ⬜ |
+| 47 | Duplicate employees by name | ⬜ |
+| 48 | Nested grouping: department → age | ⬜ |
+| 49 | Highest-paid per department, where the department's average salary is > 100000 | ⬜ |
+| 50 | Full employee salary report | ⬜ |
 
 ## Getting Started
 
 ### Prerequisites
 
-- JDK 11 or later (`java -version` to check)
+- JDK 26 (JDK 25 or later is needed for `static void main()` and `IO.println`)
+- Maven 3.9+
 
 ### Clone
 
 ```bash
-git clone https://github.com/Chetanya729/questions.git
-cd questions
+git clone https://github.com/Chetanya729/Stream-API-Practice.git
+cd Stream-API-Practice
 ```
 
-### Run a program
+### Run
 
-From the repository root, run any program directly from its source file (Java 11+):
+Run a single file straight from source:
 
 ```bash
-java basics/factorial.java
+java src/main/java/org/example/Questions/first.java
 ```
 
-Or compile first, then run it using its package name:
+Or build with Maven and run a class:
 
 ```bash
-javac basics/factorial.java
-java basics.factorial
+mvn compile
 ```
-
-Programs in the root folder have no package, so compile them together:
 
 ```bash
-javac compare.java main1.java
-java main1
+java -cp target/classes org.example.Questions.Second
 ```
 
-### IntelliJ IDEA
-
-The repo includes IntelliJ project files (`.idea/`, `questions.iml`). Open the folder in IntelliJ, then right-click any file with a `main` method and choose **Run**.
+In IntelliJ IDEA, open the project, then click the ▶ icon next to `main()` in any file under `Questions/`.
 
 ## Author
 
