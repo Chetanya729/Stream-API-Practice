@@ -49,8 +49,5 @@ public class Second {
 
         Map<String, Integer> toMap = str4.stream().collect(Collectors.toMap(Function.identity(),String::length,(existing, replacement)->existing));
         System.out.println(toMap);
-
     }
-
-
 }
