@@ -47,6 +47,9 @@ public class Fourth {
 
         List<Employee>highestaverageByDep = Employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparingInt(Employee::getSalary)))).values().stream().flatMap(Optional::stream).toList();
         System.out.println("Highest average salary by department :\n" + highestaverageByDep);
+
+        List<Employee> thirdHighestSalary = Employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).limit(3).skip(2).toList();
+        System.out.println("third highest salary : \n" + thirdHighestSalary);
     }
 }
 class Employee{
