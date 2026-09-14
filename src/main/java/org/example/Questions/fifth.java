@@ -21,7 +21,6 @@ public class fifth {
         Map<String, Map<Integer, List<Employee>>> nestedGroup = Employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment,
                         Collectors.groupingBy(Employee::getAge)));
-
         System.out.println(nestedGroup);
 
     }

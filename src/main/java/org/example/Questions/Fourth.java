@@ -1,6 +1,5 @@
 package org.example.Questions;
 
-import javax.sound.midi.SoundbankResource;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +49,12 @@ public class Fourth {
 
         List<Employee> thirdHighestSalary = Employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).limit(3).skip(2).toList();
         System.out.println("third highest salary : \n" + thirdHighestSalary);
+
+        Map<String, Optional<Employee>> highetPaidEmployeeinDep = Employees.stream().filter(e->averageInDep.getOrDefault(e.getDepartment(),0.0)>100000).collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparingInt(Employee::getSalary))));
+        System.out.println("Highest paid employee in each department where average salary is greater than 100000 :\n" + highetPaidEmployeeinDep);
+
+        Long count = Employees.stream().count();
+        System.out.println("Report for last\n "+"Total number of employees : " + count + "\nAverage salary: " + averageInDep + "\nHighest salary" + highestPaidEmployee + "\n");
     }
 }
 class Employee{
